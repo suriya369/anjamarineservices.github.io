@@ -5,6 +5,9 @@
 <title>ANJA Marine and Services Pvt Ltd</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
 <style>
 :root {
     --blue: #003366;
@@ -12,11 +15,18 @@
     --bg: #f4f8fb;
 }
 
-body {
+/* Basic Reset */
+* {
     margin: 0;
-    font-family: "Segoe UI", Arial, sans-serif;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', Arial, sans-serif;
     background: var(--bg);
     color: #333;
+    scroll-behavior: smooth;
 }
 
 /* Header */
@@ -43,31 +53,51 @@ header {
 }
 
 .header h1 {
-    margin: 0;
-    font-size: 28px;
     color: var(--blue);
+    font-size: 28px;
+    margin-bottom: 5px;
 }
 
 .header p {
-    margin: 6px 0 0;
-    font-size: 15px;
     color: #555;
+    font-size: 15px;
 }
 
-/* Section */
-section {
-    max-width: 1100px;
-    margin: auto;
-    padding: 40px 20px;
+/* Section with background image */
+.hero {
+    background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
 }
 
 /* Cards */
+section {
+    max-width: 1100px;
+    margin: auto;
+    padding: 60px 20px;
+}
+
 .card {
     background: white;
     padding: 30px;
     margin-bottom: 30px;
     border-radius: 14px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease;
+}
+
+.card.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .card h2 {
@@ -77,7 +107,7 @@ section {
     padding-left: 12px;
 }
 
-/* Services */
+/* Services list */
 ul {
     padding-left: 20px;
 }
@@ -86,7 +116,37 @@ ul li {
     margin: 10px 0;
 }
 
-/* Contact Buttons */
+/* Contact form */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+form input, form textarea {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    width: 100%;
+}
+
+form button {
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: var(--blue);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+form button:hover {
+    background: var(--light-blue);
+}
+
+/* Contact buttons */
 .contact-buttons a {
     display: inline-block;
     margin: 10px 10px 0 0;
@@ -100,6 +160,13 @@ ul li {
 
 .contact-buttons a:hover {
     background: var(--light-blue);
+}
+
+/* Google Map */
+.map-container {
+    margin-top: 20px;
+    border-radius: 12px;
+    overflow: hidden;
 }
 
 /* Footer */
@@ -120,7 +187,6 @@ footer {
 }
 </style>
 </head>
-
 <body>
 
 <header>
@@ -132,6 +198,10 @@ footer {
         </div>
     </div>
 </header>
+
+<div class="hero">
+    Your Trusted Marine Partner
+</div>
 
 <section>
     <div class="card">
@@ -155,17 +225,24 @@ footer {
     </div>
 
     <div class="card">
-        <h2>Contact</h2>
-        <p>
-            No: 68, Gothavari Nagar, 3rd Street,<br>
-            Iyyancherry, Urapakkam,<br>
-            Chengalpattu, Tamil Nadu – 603210<br>
-            India
-        </p>
-
+        <h2>Contact Us</h2>
         <div class="contact-buttons">
             <a href="mailto:info@anjamarine.com">📧 Email Us</a>
             <a href="https://wa.me/91XXXXXXXXXX" target="_blank">💬 WhatsApp</a>
+        </div>
+
+        <form>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea rows="5" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+
+        <div class="map-container">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3890.123456!2d79.9650!3d12.7650!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525d12345abcd%3A0xabcdef123456!2sChengalpattu%2C%20Tamil%20Nadu%2C%20India!5e0!3m2!1sen!2sus!4v1671234567890!5m2!1sen!2sus" 
+                width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy">
+            </iframe>
         </div>
     </div>
 </section>
@@ -173,6 +250,20 @@ footer {
 <footer>
     © 2026 ANJA Marine and Services Private Limited
 </footer>
+
+<!-- Scroll Animation Script -->
+<script>
+const cards = document.querySelectorAll('.card');
+window.addEventListener('scroll', () => {
+    const triggerBottom = window.innerHeight / 5 * 4;
+    cards.forEach(card => {
+        const cardTop = card.getBoundingClientRect().top;
+        if(cardTop < triggerBottom){
+            card.classList.add('visible');
+        }
+    });
+});
+</script>
 
 </body>
 </html>
