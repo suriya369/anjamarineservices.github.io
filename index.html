@@ -7,23 +7,23 @@
 
 <style>
 :root {
-    --primary: #003366;
-    --secondary: #006699;
-    --light: #f4f8fb;
+    --blue: #003366;
+    --light-blue: #006699;
+    --bg: #f4f8fb;
 }
 
 body {
     margin: 0;
     font-family: "Segoe UI", Arial, sans-serif;
-    background: var(--light);
+    background: var(--bg);
     color: #333;
 }
 
 /* Header */
 header {
-    background: linear-gradient(135deg, #003366, #005b99);
-    color: white;
-    padding: 30px 0;
+    background: white;
+    border-bottom: 3px solid var(--blue);
+    padding: 25px 0;
 }
 
 .header {
@@ -37,7 +37,7 @@ header {
 
 .header img {
     width: 110px;
-    background: white;
+    background: #f5f5f5;
     padding: 8px;
     border-radius: 12px;
 }
@@ -45,12 +45,13 @@ header {
 .header h1 {
     margin: 0;
     font-size: 28px;
+    color: var(--blue);
 }
 
 .header p {
     margin: 6px 0 0;
     font-size: 15px;
-    opacity: 0.9;
+    color: #555;
 }
 
 /* Section */
@@ -67,23 +68,16 @@ section {
     margin-bottom: 30px;
     border-radius: 14px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
 }
 
 .card h2 {
-    color: var(--primary);
+    color: var(--blue);
     margin-top: 0;
-    border-bottom: 3px solid var(--secondary);
-    display: inline-block;
-    padding-bottom: 6px;
+    border-left: 5px solid var(--light-blue);
+    padding-left: 12px;
 }
 
-/* Services List */
+/* Services */
 ul {
     padding-left: 20px;
 }
@@ -92,9 +86,25 @@ ul li {
     margin: 10px 0;
 }
 
+/* Contact Buttons */
+.contact-buttons a {
+    display: inline-block;
+    margin: 10px 10px 0 0;
+    padding: 12px 18px;
+    text-decoration: none;
+    color: white;
+    background: var(--blue);
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.contact-buttons a:hover {
+    background: var(--light-blue);
+}
+
 /* Footer */
 footer {
-    background: var(--primary);
+    background: var(--blue);
     color: white;
     text-align: center;
     padding: 18px;
@@ -137,10 +147,10 @@ footer {
     <div class="card">
         <h2>Our Services</h2>
         <ul>
-            <li>Marine Support Services</li>
-            <li>Water Transportation Assistance</li>
-            <li>Marine Operations & Logistics</li>
-            <li>Port & Coastal Services</li>
+            <li>⚓ Marine Support Services</li>
+            <li>🚢 Water Transportation Assistance</li>
+            <li>📦 Marine Operations & Logistics</li>
+            <li>🌊 Port & Coastal Services</li>
         </ul>
     </div>
 
@@ -152,6 +162,11 @@ footer {
             Chengalpattu, Tamil Nadu – 603210<br>
             India
         </p>
+
+        <div class="contact-buttons">
+            <a href="mailto:info@anjamarine.com">📧 Email Us</a>
+            <a href="https://wa.me/91XXXXXXXXXX" target="_blank">💬 WhatsApp</a>
+        </div>
     </div>
 </section>
 
