@@ -63,7 +63,7 @@ header {
     font-size: 15px;
 }
 
-/* Section with background image */
+/* Hero Section */
 .hero {
     background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
     height: 400px;
@@ -75,9 +75,25 @@ header {
     font-size: 32px;
     font-weight: bold;
     text-align: center;
+    position: relative;
 }
 
-/* Cards */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3); /* overlay for readability */
+    z-index: 1;
+}
+
+.hero span {
+    position: relative;
+    z-index: 2;
+}
+
+/* Cards Section */
 section {
     max-width: 1100px;
     margin: auto;
@@ -116,7 +132,7 @@ ul li {
     margin: 10px 0;
 }
 
-/* Contact form */
+/* Contact Form */
 form {
     display: flex;
     flex-direction: column;
@@ -146,7 +162,7 @@ form button:hover {
     background: var(--light-blue);
 }
 
-/* Contact buttons */
+/* Contact Buttons */
 .contact-buttons a {
     display: inline-block;
     margin: 10px 10px 0 0;
@@ -200,7 +216,7 @@ footer {
 </header>
 
 <div class="hero">
-    Your Trusted Marine Partner
+    <span>Your Trusted Marine Partner</span>
 </div>
 
 <section>
